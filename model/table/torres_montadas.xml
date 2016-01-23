@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Document   : torres_montadas.xml
+    Description:
+        Estructura de la tabla torres_montadas.
+-->
+<tabla>
+<columna>
+    <nombre>id</nombre>
+    <tipo>serial</tipo>
+    <nulo>NO</nulo>
+    <defecto>nextval('torres_montadas_id_seq'::regclass)</defecto>
+</columna>
+<columna>
+    <nombre>numero_serie</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>NO</nulo>
+</columna>
+<columna>
+    <nombre>placa_base</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>placa_base_name</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>caja</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>fuente_alimentacion</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>fuente_name</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>procesador_1</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>procesador_2</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>procesador_name</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>grafica_1</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>grafica_2</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>grafica_name</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>disco_duro_1</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>disco_duro_2</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>disco12_name</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>disco_duro_3</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>disco_duro_4</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>disco34_name</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>memoria_1</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>memoria_2</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>memoria12_name</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>memoria_3</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>memoria_4</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>memoria34_name</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>optico_1</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>optico_2</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>optico_name</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>sistema_operativo</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>sistema_operativo_name</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>lector_tarjetas</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>lector_tarjetas_name</nombre>
+    <tipo>varchar(50)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>anexos</nombre>
+    <tipo>varchar(250)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<columna>
+    <nombre>cliente_id</nombre>
+    <tipo>varchar(6)</tipo>
+    <nulo>YES</nulo>
+</columna>
+<restriccion>
+    <nombre>torres_montadas_pkey</nombre>
+    <consulta>PRIMARY KEY (id)</consulta>
+</restriccion>
+</tabla>

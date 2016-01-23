@@ -1,0 +1,944 @@
+{include="header"}
+<script>
+function pulsar(e) {
+  tecla = (document.all) ? e.keyCode :e.which;
+  return (tecla!=13);
+}
+</script>
+
+ <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation"><a href="{$fsc->url()}"<span class="glyphicon glyphicon-refresh" aria-hidden="true"></a></li>
+    <li role="presentation" {if condition="!$fsc->editar"} class="active" {/if}><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Listado</a></li>
+    <li role="presentation" ><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Nueva torre</a></li>
+   {if condition="$fsc->editar"}
+    <li role="presentation"  class="active"><a href="#editar" aria-controls="editar" role="tab" data-toggle="tab">Editar</a></li>
+   {/if}
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content"> 
+      <div role="tabpanel"  class=" tab-pane {if condition="!$fsc->editar"} active {/if}"  id="home"><!--listado-->
+          
+              <div class="table-responsive"><!--Listado-->
+                  <table class="table table-hover">
+                     <thead>
+                         <tr>  
+                      <th class="text-left" width="160">Numero de serie</th>
+                      <th class="text-left">Placa Base</th>
+                      <th class="text-left">Disco Principal</th>
+                      <th class="text-left">Sistema Operativo</th>
+                      <th class="text-right">Caja que usa</th>
+                         </tr>
+                     </thead>
+                      {loop="$fsc->listado"}
+                      <tr>
+                          <td class="text-left">
+                              <a href="{$fsc->url()}&id={$value->id}">{$value->numero_serie}</a>
+                          </td>
+                          <td class="text-left">{$value->placa_base_name}</td>
+                          <td class="text-left">{$value->disco12_name}</td>
+                          <td class="text-left">{$value->sistema_operativo_name}</td>
+                          <td class="text-right">{$value->caja}</td>
+                       </tr>
+                      {/loop}
+                      </table>
+                  
+              </div>
+          
+      </div>
+      <div role="tabpanel" class="tab-pane" id="profile"><!--Nueva tarea-->
+          <form class="form" action="{$fsc->url()}" method="post" >
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-4">
+                  <div class="form-group">
+                      <input type="hidden" name="id" value="nuevo"/>
+                      Numero de serie automatico:
+                      <input type="text" name="numero_serie" value="{$fsc->genera_serie()}" class="form-control" readonly="readonly" />
+                  </div>
+                  </div>
+                  <div class="col-md-4"><br>
+                  <div class="form-group">
+                           <label class="form-group">Hacer dos etiquetas de este número y pegarlo en un lugar visible del equipo y de la caja de cartón</label>
+                      
+                  </div>
+                  </div>    
+                   <div class="col-md-4">
+                  <div class="form-group">
+                     
+                       </div>
+                      <div class="text-right">
+                          <button class="btn btn-sm btn-primary" type="sutmit">
+                          <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                              &nbsp Guardar
+                          </button>
+                      </div>
+                  </div>             
+                  </div>
+               <div class="row">
+                  
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="placa_base" value="" class="form-control" placeholder="Nº de serie de la placa base" onkeypress="return pulsar(event)"/>
+                        </div>
+                     </div>
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="placa_base_name" value="" class="form-control" placeholder="Modelo de la placa base" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Placa base del equipo</label>                  
+                    </div>
+                  </div>    
+               </div>
+              <div class="row">
+                  
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="caja" value="" class="form-control" placeholder="Caja que usa el equipo" onkeypress="return pulsar(event)"/>
+                        </div>
+                     </div>
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Caja que usa el equipo</label>                  
+                    </div>
+                  </div>    
+               </div>
+              <div class="row">
+                  
+                     <div class="col-md-4">
+                         <div class="form-group">
+                        <input type="text" name="fuente_alimentacion" value="" class="form-control" placeholder="Nº de serie de la fuente (si lleva)" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                         <div class="col-md-4"> 
+                        <div class="form-group">
+                          <input type="text" name="fuente_name" value="" class="form-control" placeholder="Modelo o caracteristicas de la fuente" onkeypress="return pulsar(event)"/>
+                        </div>
+                     </div>
+                 
+                  
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Fuente principal del equipo (si lleva dos poner los dos)</label>                  
+                    </div>
+                  </div>    
+               </div>
+              <div class="row">
+                       <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="procesador_1" value="" class="form-control" placeholder="Nº de serie del procesador 1" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="procesador_2" value="" class="form-control" placeholder="Nº de serie del segundo procesador" onkeypress="return pulsar(event)"/>
+                        </div>
+                     </div>
+                 <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Procesadores del equipo  si solo hay uno poner uno solo</label>                  
+                    </div>
+                  </div>   
+                </div>
+              <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="procesador_name" value="" class="form-control" placeholder="Modelo de los dos procesadores" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Procesadores del equipo si son iguales poner uno solo</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+               <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="grafica_1" value="" class="form-control" placeholder="Nº de serie de la grafica 1" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="grafica_2" value="" class="form-control" placeholder="Nº de serie de la grafica 2" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Tarjetas graficas del equipo si llevan, si no dejar vacios</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+                <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="grafica_name" value="" class="form-control" placeholder="Nombre de la(s) grafica(s)" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Modelo de las Tarjetas graficas del equipo si llevan, si no dejar vacios</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+               <div class="row">
+                       <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="disco_duro_1" value="" class="form-control" placeholder="Nº de serie del disco principal" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="disco_duro_2" value="" class="form-control" placeholder="Nº de serie del disco 2" onkeypress="return pulsar(event)"/>
+                        </div>
+                     </div>
+                 <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Discos del equipo  si solo hay uno poner uno solo</label>                  
+                    </div>
+                  </div>   
+                </div>
+               <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="disco12_name" value="" class="form-control" placeholder="Nombre de los discos1 y 2" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control" />
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Modelo de los discos 1 y 2 del equipo</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+               <div class="row">
+                       <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="disco_duro_3" value="" class="form-control" placeholder="Nº de serie del disco 3" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="disco_duro_4" value="" class="form-control" placeholder="Nº de serie del disco 4" onkeypress="return pulsar(event)"/>
+                        </div>
+                     </div>
+                 <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Discos del equipo  si solo hay uno poner uno solo</label>                  
+                    </div>
+                  </div>   
+                </div>
+               <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="disco34_name" value="" class="form-control" placeholder="Nombre de los discos 3 y 4" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Modelo de los discos 3 y 4 del equipo</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+                <div class="row">
+                       <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="memoria_1" value="" class="form-control" placeholder="Nº de serie de la memoria principal" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="memoria_2" value="" class="form-control" placeholder="Nº de serie de la memoria 2" onkeypress="return pulsar(event)"/>
+                        </div>
+                     </div>
+                 <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Memorias del equipo  si solo hay una poner una solo</label>                  
+                    </div>
+                  </div>   
+                </div>
+               <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="memoria12_name" value="" class="form-control" placeholder="Nombre de las memorias 1 y 2" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Modelo de las memorias 1 y 2 del equipo</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+               <div class="row">
+                       <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="memoria_3" value="" class="form-control" placeholder="Nº de serie de la memoria 3" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="memoria_4" value="" class="form-control" placeholder="Nº de serie de la memoria 4" onkeypress="return pulsar(event)"/>
+                        </div>
+                     </div>
+                 <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Memorias adicionales del equipo</label>                  
+                    </div>
+                  </div>   
+                </div>
+               <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="memoria34_name" value="" class="form-control" placeholder="Modelo de las memorias 3 y 4" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Modelo de las memorias 3 y 4 del equipo</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+               <div class="row">
+                       <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="optico_1" value="" class="form-control" placeholder="Nº de serie del optico 1" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="optico_2" value="" class="form-control" placeholder="Nº de serie del optico 2" onkeypress="return pulsar(event)"/>
+                        </div>
+                     </div>
+                 <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Grabadoras o lectores de CD/DVD del equipo</label>                  
+                    </div>
+                  </div>   
+                </div>
+               <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="optico_name" value="" class="form-control" placeholder="Modelo de las unidades opricas" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Modelo de los Opticos del equipo</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+               <div class="row">
+                  
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="sistema_operativo" value="" class="form-control" placeholder="Nº de serie del sistema operativo" onkeypress="return pulsar(event)"/>
+                        </div>
+                     </div>
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="sistema_operativo_name" value="" class="form-control" placeholder="Modelo del sistema operativo" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Sistema operativo del equipo</label>                  
+                    </div>
+                  </div>    
+               </div>
+               <div class="row">
+                  
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="lector_tarjetas" value="" class="form-control" placeholder="Nº de serie del lector de tarjetas" onkeypress="return pulsar(event)"/>
+                        </div>
+                     </div>
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="lector_tarjetas_name" value="" class="form-control" placeholder="Modelo del lector de tarjetas" onkeypress="return pulsar(event)"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Lector de tarjetas del equipo (si LLeva)</label>                  
+                    </div>
+                  </div>    
+               </div><div class="row">
+                  
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="anexos" value="" class="form-control" placeholder="cualquier otro dispositivo" onkeypress="return pulsar(event)"/>
+                        </div>
+                     </div>
+                 
+                   <div class="col-md-4">
+                  <div class="form-group">
+                  
+                      <select name="cliente_id" class="form-control" placeholder="Cliente asociado si lo hay">
+                          <option value="">Ninguno</option>
+                          <option value="">--------</option>
+                          {loop="$fsc->lista_clientes()"}
+                          <option value="{$value->nombre}">{$value->nombre}</option>
+                          {/loop}
+                      </select>                 
+                  </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Otros Datos</label>                  
+                    </div>
+                  </div>    
+               </div>
+                <div class="text-right">
+                          <button class="btn btn-sm btn-primary" type="sutmit">
+                          <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                              &nbsp Guardar
+                          </button>
+                      </div>
+              
+                    
+              </div>
+             </form> 
+   </div>
+{if condition="$fsc->editar"}<!--editar-->      
+<div role="tabpanel" class="tab-pane active" id="editar">
+<form class="form" action="{$fsc->url()}" method="post" >
+          <div class="container">
+              <h3>Editar Torre</h3>
+              <div class="row">
+                  <div class="col-md-4">
+                  <div class="form-group">
+                      <input type="hidden" name="modificar" value="{$fsc->editar->id}" />
+                     <div class="container">
+              <div class="row">
+                  <div class="col-md-4">
+                  <div class="form-group">
+                      Numero de serie automatico:
+                      <input type="text" name="numero_serie" value="{$fsc->editar->numero_serie}" class="form-control" disabled/>                  </div>
+                  </div>
+                  <div class="col-md-4"><br>
+                  <div class="form-group">
+                           <label class="form-group">Hacer dos etiquetas de este número y pegarlo en un lugar visible del equipo y de la caja de cartón</label>
+                      
+                  </div>
+                  </div>    
+                   <div class="col-md-4">
+                  <div class="form-group">
+                     
+                       </div>
+                      <div class="row">
+                  <div class="col-md-12">
+                     <div class="text-right">
+                          <a href="{$fsc->url()}&delete={$fsc->editar->id}" class="btn btn-sm btn-danger">
+                              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                              
+                          </a>
+                          <button class="btn btn-sm btn-primary" type="sutmit">
+                          <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                              &nbsp Guardar
+                          </button>
+                      </div>
+                  </div>
+               </div>
+                  </div>             
+                  </div>
+               <div class="row">
+                  
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="placa_base" value="{$fsc->editar->placa_base}" class="form-control" placeholder="Nº de serie de la placa base"/>
+                        </div>
+                     </div>
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="placa_base_name" value="{$fsc->editar->placa_base_name}" class="form-control" placeholder="Modelo de la placa base"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Placa base del equipo</label>                  
+                    </div>
+                  </div>    
+               </div>
+              <div class="row">
+                  
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="caja" value="{$fsc->editar->caja}" class="form-control" placeholder="Caja que usa el equipo"/>
+                        </div>
+                     </div>
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Caja que usa el equipo</label>                  
+                    </div>
+                  </div>    
+               </div>
+              <div class="row">
+                  
+                     <div class="col-md-4">
+                         <div class="form-group">
+                        <input type="text" name="fuente_alimentacion" value="{$fsc->editar->fuente_alimentacion}" class="form-control" placeholder="Nº de serie de la fuente (si lleva)"/>
+                    </div>
+                  </div>    
+                         <div class="col-md-4"> 
+                        <div class="form-group">
+                          <input type="text" name="fuente_name" value="{$fsc->editar->fuente_name}" class="form-control" placeholder="Modelo o caracteristicas de la fuente"/>
+                        </div>
+                     </div>
+                 
+                  
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Fuente principal del equipo (si lleva dos poner los dos)</label>                  
+                    </div>
+                  </div>    
+               </div>
+              <div class="row">
+                       <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="procesador_1" value="{$fsc->editar->procesador_1}" class="form-control" placeholder="Nº de serie del procesador 1"/>
+                    </div>
+                  </div>    
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="procesador_2" value="{$fsc->editar->procesador_2}" class="form-control" placeholder="Nº de serie del segundo procesador"/>
+                        </div>
+                     </div>
+                 <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Procesadores del equipo  si solo hay uno poner uno solo</label>                  
+                    </div>
+                  </div>   
+                </div>
+              <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="procesador_name" value="{$fsc->editar->procesador_name}" class="form-control" placeholder="Modelo de los dos procesadores"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Procesadores del equipo si son iguales poner uno solo</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+               <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="grafica_1" value="{$fsc->editar->grafica_1}" class="form-control" placeholder="Nº de serie de la grafica 1"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="grafica_2" value="{$fsc->editar->grafica_2}" class="form-control" placeholder="Nº de serie de la grafica 2"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Tarjetas graficas del equipo si llevan, si no dejar vacios</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+                <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="grafica_name" value="{$fsc->editar->grafica_name}" class="form-control" placeholder="Nombre de la(s) grafica(s)"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Modelo de las Tarjetas graficas del equipo si llevan, si no dejar vacios</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+               <div class="row">
+                       <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="disco_duro_1" value="{$fsc->editar->disco_duro_1}" class="form-control" placeholder="Nº de serie del disco principal"/>
+                    </div>
+                  </div>    
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="disco_duro_2" value="{$fsc->editar->disco_duro_2}" class="form-control" placeholder="Nº de serie del disco 2"/>
+                        </div>
+                     </div>
+                 <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Discos del equipo  si solo hay uno poner uno solo</label>                  
+                    </div>
+                  </div>   
+                </div>
+               <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="disco12_name" value="{$fsc->editar->disco12_name}" class="form-control" placeholder="Nombre de los discos1 y 2"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Modelo de los discos 1 y 2 del equipo</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+               <div class="row">
+                       <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="disco_duro_3" value="{$fsc->editar->disco_duro_3}" class="form-control" placeholder="Nº de serie del disco 3"/>
+                    </div>
+                  </div>    
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="disco_duro_4" value="{$fsc->editar->disco_duro_4}" class="form-control" placeholder="Nº de serie del disco 4"/>
+                        </div>
+                     </div>
+                 <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Discos del equipo  si solo hay uno poner uno solo</label>                  
+                    </div>
+                  </div>   
+                </div>
+               <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="disco34_name" value="{$fsc->editar->disco34_name}" class="form-control" placeholder="Nombre de los discos 3 y 4"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Modelo de los discos 3 y 4 del equipo</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+                <div class="row">
+                       <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="memoria_1" value="{$fsc->editar->memoria_1}" class="form-control" placeholder="Nº de serie de la memoria principal"/>
+                    </div>
+                  </div>    
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="memoria_2" value="{$fsc->editar->memoria_2}" class="form-control" placeholder="Nº de serie de la memoria 2"/>
+                        </div>
+                     </div>
+                 <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Memorias del equipo  si solo hay una poner una solo</label>                  
+                    </div>
+                  </div>   
+                </div>
+               <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="memoria12_name" value="{$fsc->editar->memoria12_name}" class="form-control" placeholder="Nombre de las memorias 1 y 2"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Modelo de las memorias 1 y 2 del equipo</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+               <div class="row">
+                       <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="memoria_3" value="{$fsc->editar->memoria_3}" class="form-control" placeholder="Nº de serie de la memoria 3"/>
+                    </div>
+                  </div>    
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="memoria_4" value="{$fsc->editar->memoria_4}" class="form-control" placeholder="Nº de serie de la memoria 4"/>
+                        </div>
+                     </div>
+                 <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Memorias adicionales del equipo</label>                  
+                    </div>
+                  </div>   
+                </div>
+               <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="memoria34_name" value="{$fsc->editar->memoria34_name}" class="form-control" placeholder="Modelo de las memorias 3 y 4"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Modelo de las memorias 3 y 4 del equipo</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+               <div class="row">
+                       <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="optico_1" value="{$fsc->editar->optico_1}" class="form-control" placeholder="Nº de serie del optico 1"/>
+                    </div>
+                  </div>    
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="optico_2" value="{$fsc->editar->optico_2}" class="form-control" placeholder="Nº de serie del optico 2"/>
+                        </div>
+                     </div>
+                 <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Grabadoras o lectores de CD/DVD del equipo</label>                  
+                    </div>
+                  </div>   
+                </div>
+               <div class="row"> <!--inicio de fila-->
+                  
+                      <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="optico_name" value="{$fsc->editar->optico_name}" class="form-control" placeholder="Modelo de las unidades opricas"/>
+                    </div>
+                  </div>    
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="hidden" name="" value="" class="form-control"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Modelo de los Opticos del equipo</label>                  
+                    </div>
+                  </div>       
+               </div><!--Fin de fila-->
+               <div class="row">
+                  
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="sistema_operativo" value="{$fsc->editar->sistema_operativo}" class="form-control" placeholder="Nº de serie del sistema operativo"/>
+                        </div>
+                     </div>
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="sistema_operativo_name" value="{$fsc->editar->sistema_operativo_name}" class="form-control" placeholder="Modelo del sistema operativo"/>
+                    </div>
+                  </div>    
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Sistema operativo del equipo</label>                  
+                    </div>
+                  </div>    
+               </div>
+               <div class="row">
+                  
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="lector_tarjetas" value="{$fsc->editar->lector_tarjetas}" class="form-control" placeholder="Nº de serie del lector de tarjetas"/>
+                        </div>
+                     </div>
+                 
+                  <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" name="lector_tarjetas_name" value="{$fsc->editar->lector_tarjetas_name}" class="form-control" placeholder="Modelo de la placa base"/>
+                    </div>
+                  </div>                      <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Lector de tarjetas del equipo (si LLeva)</label>                  
+                    </div>
+                  </div>    
+               </div><div class="row">
+                  
+                     <div class="col-md-4">
+                        <div class="form-group">
+                          <input type="text" name="anexos" value="{$fsc->editar->anexos}" class="form-control" placeholder="cualquier otro dispositivo"/>
+                        </div>
+                     </div>
+                 
+                   <div class="col-md-4">
+                  <div class="form-group">
+                     <select name="cliente_id" class="form-control">
+                          <option value="">Ninguno</option>
+                          <option value="">--------</option>
+                          {loop="$fsc->lista_clientes()"}
+                          <option value="{$value->codcliente}" {if condition="$value->codcliente==$fsc->editar->cliente_id"} selected="selected"{/if}>{$value->nombre}</option>
+                          {/loop}
+                      </select>                 
+                  </div>
+                  </div>       
+                  <div class="col-md-4">
+                    <div class="form-group">
+                     
+                      <label>Otros Datos</label>                  
+                    </div>
+                  </div>    
+               </div>
+              </div>
+             </div>    
+            </div>
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="text-right">
+                          <a href="{$fsc->url()}&delete={$fsc->editar->id}" class="btn btn-sm btn-danger">
+                              <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                              
+                          </a>
+                          <button class="btn btn-sm btn-primary" type="sutmit">
+                          <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                              &nbsp Guardar
+                          </button>
+                      </div>
+                  </div>
+               </div>
+          </div>
+          </form>
+   
+{/if}
+</div>
+</div>
+
+{include="footer"}
