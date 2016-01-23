@@ -495,7 +495,7 @@ function pulsar(e) {
               <div class="row">
                   <div class="col-md-4">
                   <div class="form-group">
-                      Numero de serie automatico:
+                      Numero de serie:
                       <input type="text" name="numero_serie" value="{$fsc->editar->numero_serie}" class="form-control" disabled/>                  </div>
                   </div>
                   <div class="col-md-4"><br>
@@ -528,13 +528,13 @@ function pulsar(e) {
                   
                      <div class="col-md-4">
                         <div class="form-group">
-                          <input type="text" name="placa_base" value="{$fsc->editar->placa_base}" class="form-control" placeholder="Nº de serie de la placa base"/>
+                          <input type="text" name="placa_base" value="{$fsc->editar->placa_base}" class="form-control" placeholder="Nº de serie de la placa base" onkeypress="return pulsar(event)"/>
                         </div>
                      </div>
                  
                   <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="placa_base_name" value="{$fsc->editar->placa_base_name}" class="form-control" placeholder="Modelo de la placa base"/>
+                        <input type="text" name="placa_base_name" value="{$fsc->editar->placa_base_name}" class="form-control" placeholder="Modelo de la placa base" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                   <div class="col-md-4">
@@ -548,7 +548,7 @@ function pulsar(e) {
                   
                      <div class="col-md-4">
                         <div class="form-group">
-                          <input type="text" name="caja" value="{$fsc->editar->caja}" class="form-control" placeholder="Caja que usa el equipo"/>
+                          <input type="text" name="caja" value="{$fsc->editar->caja}" class="form-control" placeholder="Caja que usa el equipo" onkeypress="return pulsar(event)" />
                         </div>
                      </div>
                  
@@ -568,12 +568,12 @@ function pulsar(e) {
                   
                      <div class="col-md-4">
                          <div class="form-group">
-                        <input type="text" name="fuente_alimentacion" value="{$fsc->editar->fuente_alimentacion}" class="form-control" placeholder="Nº de serie de la fuente (si lleva)"/>
+                        <input type="text" name="fuente_alimentacion" value="{$fsc->editar->fuente_alimentacion}" class="form-control" placeholder="Nº de serie de la fuente (si lleva)" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                          <div class="col-md-4"> 
                         <div class="form-group">
-                          <input type="text" name="fuente_name" value="{$fsc->editar->fuente_name}" class="form-control" placeholder="Modelo o caracteristicas de la fuente"/>
+                          <input type="text" name="fuente_name" value="{$fsc->editar->fuente_name}" class="form-control" placeholder="Modelo o caracteristicas de la fuente" onkeypress="return pulsar(event)"/>
                         </div>
                      </div>
                  
@@ -588,12 +588,12 @@ function pulsar(e) {
               <div class="row">
                        <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="procesador_1" value="{$fsc->editar->procesador_1}" class="form-control" placeholder="Nº de serie del procesador 1"/>
+                        <input type="text" name="procesador_1" value="{$fsc->editar->procesador_1}" class="form-control" placeholder="Nº de serie del procesador 1"onkeypress="return pulsar(event)" />
                     </div>
                   </div>    
                      <div class="col-md-4">
                         <div class="form-group">
-                          <input type="text" name="procesador_2" value="{$fsc->editar->procesador_2}" class="form-control" placeholder="Nº de serie del segundo procesador"/>
+                          <input type="text" name="procesador_2" value="{$fsc->editar->procesador_2}" class="form-control" placeholder="Nº de serie del segundo procesador" onkeypress="return pulsar(event)"/>
                         </div>
                      </div>
                  <div class="col-md-4">
@@ -607,7 +607,7 @@ function pulsar(e) {
                   
                       <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="procesador_name" value="{$fsc->editar->procesador_name}" class="form-control" placeholder="Modelo de los dos procesadores"/>
+                        <input type="text" name="procesador_name" value="{$fsc->editar->procesador_name}" class="form-control" placeholder="Modelo de los dos procesadores" onkeypress="return pulsar(event)" />
                     </div>
                   </div>    
                  
@@ -627,13 +627,13 @@ function pulsar(e) {
                   
                       <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="grafica_1" value="{$fsc->editar->grafica_1}" class="form-control" placeholder="Nº de serie de la grafica 1"/>
+                        <input type="text" name="grafica_1" value="{$fsc->editar->grafica_1}" class="form-control" placeholder="Nº de serie de la grafica 1" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                  
                   <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="grafica_2" value="{$fsc->editar->grafica_2}" class="form-control" placeholder="Nº de serie de la grafica 2"/>
+                        <input type="text" name="grafica_2" value="{$fsc->editar->grafica_2}" class="form-control" placeholder="Nº de serie de la grafica 2" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                   <div class="col-md-4">
@@ -647,7 +647,7 @@ function pulsar(e) {
                   
                       <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="grafica_name" value="{$fsc->editar->grafica_name}" class="form-control" placeholder="Nombre de la(s) grafica(s)"/>
+                        <input type="text" name="grafica_name" value="{$fsc->editar->grafica_name}" class="form-control" placeholder="Nombre de la(s) grafica(s)" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                  
@@ -666,12 +666,12 @@ function pulsar(e) {
                <div class="row">
                        <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="disco_duro_1" value="{$fsc->editar->disco_duro_1}" class="form-control" placeholder="Nº de serie del disco principal"/>
+                        <input type="text" name="disco_duro_1" value="{$fsc->editar->disco_duro_1}" class="form-control" placeholder="Nº de serie del disco principal" onkeypress="return pulsar(event)" />
                     </div>
                   </div>    
                      <div class="col-md-4">
                         <div class="form-group">
-                          <input type="text" name="disco_duro_2" value="{$fsc->editar->disco_duro_2}" class="form-control" placeholder="Nº de serie del disco 2"/>
+                          <input type="text" name="disco_duro_2" value="{$fsc->editar->disco_duro_2}" class="form-control" placeholder="Nº de serie del disco 2" onkeypress="return pulsar(event)"/>
                         </div>
                      </div>
                  <div class="col-md-4">
@@ -685,7 +685,7 @@ function pulsar(e) {
                   
                       <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="disco12_name" value="{$fsc->editar->disco12_name}" class="form-control" placeholder="Nombre de los discos1 y 2"/>
+                        <input type="text" name="disco12_name" value="{$fsc->editar->disco12_name}" class="form-control" placeholder="Nombre de los discos1 y 2" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                  
@@ -704,12 +704,12 @@ function pulsar(e) {
                <div class="row">
                        <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="disco_duro_3" value="{$fsc->editar->disco_duro_3}" class="form-control" placeholder="Nº de serie del disco 3"/>
+                        <input type="text" name="disco_duro_3" value="{$fsc->editar->disco_duro_3}" class="form-control" placeholder="Nº de serie del disco 3" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                      <div class="col-md-4">
                         <div class="form-group">
-                          <input type="text" name="disco_duro_4" value="{$fsc->editar->disco_duro_4}" class="form-control" placeholder="Nº de serie del disco 4"/>
+                          <input type="text" name="disco_duro_4" value="{$fsc->editar->disco_duro_4}" class="form-control" placeholder="Nº de serie del disco 4" onkeypress="return pulsar(event)"/>
                         </div>
                      </div>
                  <div class="col-md-4">
@@ -723,7 +723,7 @@ function pulsar(e) {
                   
                       <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="disco34_name" value="{$fsc->editar->disco34_name}" class="form-control" placeholder="Nombre de los discos 3 y 4"/>
+                        <input type="text" name="disco34_name" value="{$fsc->editar->disco34_name}" class="form-control" placeholder="Nombre de los discos 3 y 4" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                  
@@ -742,12 +742,12 @@ function pulsar(e) {
                 <div class="row">
                        <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="memoria_1" value="{$fsc->editar->memoria_1}" class="form-control" placeholder="Nº de serie de la memoria principal"/>
+                        <input type="text" name="memoria_1" value="{$fsc->editar->memoria_1}" class="form-control" placeholder="Nº de serie de la memoria principal" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                      <div class="col-md-4">
                         <div class="form-group">
-                          <input type="text" name="memoria_2" value="{$fsc->editar->memoria_2}" class="form-control" placeholder="Nº de serie de la memoria 2"/>
+                          <input type="text" name="memoria_2" value="{$fsc->editar->memoria_2}" class="form-control" placeholder="Nº de serie de la memoria 2" onkeypress="return pulsar(event)"/>
                         </div>
                      </div>
                  <div class="col-md-4">
@@ -761,7 +761,7 @@ function pulsar(e) {
                   
                       <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="memoria12_name" value="{$fsc->editar->memoria12_name}" class="form-control" placeholder="Nombre de las memorias 1 y 2"/>
+                        <input type="text" name="memoria12_name" value="{$fsc->editar->memoria12_name}" class="form-control" placeholder="Nombre de las memorias 1 y 2" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                  
@@ -780,12 +780,12 @@ function pulsar(e) {
                <div class="row">
                        <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="memoria_3" value="{$fsc->editar->memoria_3}" class="form-control" placeholder="Nº de serie de la memoria 3"/>
+                        <input type="text" name="memoria_3" value="{$fsc->editar->memoria_3}" class="form-control" placeholder="Nº de serie de la memoria 3" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                      <div class="col-md-4">
                         <div class="form-group">
-                          <input type="text" name="memoria_4" value="{$fsc->editar->memoria_4}" class="form-control" placeholder="Nº de serie de la memoria 4"/>
+                          <input type="text" name="memoria_4" value="{$fsc->editar->memoria_4}" class="form-control" placeholder="Nº de serie de la memoria 4" onkeypress="return pulsar(event)"/>
                         </div>
                      </div>
                  <div class="col-md-4">
@@ -799,7 +799,7 @@ function pulsar(e) {
                   
                       <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="memoria34_name" value="{$fsc->editar->memoria34_name}" class="form-control" placeholder="Modelo de las memorias 3 y 4"/>
+                        <input type="text" name="memoria34_name" value="{$fsc->editar->memoria34_name}" class="form-control" placeholder="Modelo de las memorias 3 y 4" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                  
@@ -818,12 +818,12 @@ function pulsar(e) {
                <div class="row">
                        <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="optico_1" value="{$fsc->editar->optico_1}" class="form-control" placeholder="Nº de serie del optico 1"/>
+                        <input type="text" name="optico_1" value="{$fsc->editar->optico_1}" class="form-control" placeholder="Nº de serie del optico 1" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                      <div class="col-md-4">
                         <div class="form-group">
-                          <input type="text" name="optico_2" value="{$fsc->editar->optico_2}" class="form-control" placeholder="Nº de serie del optico 2"/>
+                          <input type="text" name="optico_2" value="{$fsc->editar->optico_2}" class="form-control" placeholder="Nº de serie del optico 2" onkeypress="return pulsar(event)"/>
                         </div>
                      </div>
                  <div class="col-md-4">
@@ -837,7 +837,7 @@ function pulsar(e) {
                   
                       <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="optico_name" value="{$fsc->editar->optico_name}" class="form-control" placeholder="Modelo de las unidades opricas"/>
+                        <input type="text" name="optico_name" value="{$fsc->editar->optico_name}" class="form-control" placeholder="Modelo de las unidades opricas" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                  
@@ -857,13 +857,13 @@ function pulsar(e) {
                   
                      <div class="col-md-4">
                         <div class="form-group">
-                          <input type="text" name="sistema_operativo" value="{$fsc->editar->sistema_operativo}" class="form-control" placeholder="Nº de serie del sistema operativo"/>
+                          <input type="text" name="sistema_operativo" value="{$fsc->editar->sistema_operativo}" class="form-control" placeholder="Nº de serie del sistema operativo" onkeypress="return pulsar(event)"/>
                         </div>
                      </div>
                  
                   <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="sistema_operativo_name" value="{$fsc->editar->sistema_operativo_name}" class="form-control" placeholder="Modelo del sistema operativo"/>
+                        <input type="text" name="sistema_operativo_name" value="{$fsc->editar->sistema_operativo_name}" class="form-control" placeholder="Modelo del sistema operativo" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>    
                   <div class="col-md-4">
@@ -877,13 +877,13 @@ function pulsar(e) {
                   
                      <div class="col-md-4">
                         <div class="form-group">
-                          <input type="text" name="lector_tarjetas" value="{$fsc->editar->lector_tarjetas}" class="form-control" placeholder="Nº de serie del lector de tarjetas"/>
+                          <input type="text" name="lector_tarjetas" value="{$fsc->editar->lector_tarjetas}" class="form-control" placeholder="Nº de serie del lector de tarjetas" onkeypress="return pulsar(event)"/>
                         </div>
                      </div>
                  
                   <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" name="lector_tarjetas_name" value="{$fsc->editar->lector_tarjetas_name}" class="form-control" placeholder="Modelo de la placa base"/>
+                        <input type="text" name="lector_tarjetas_name" value="{$fsc->editar->lector_tarjetas_name}" class="form-control" placeholder="Modelo del lector de tarjetas" onkeypress="return pulsar(event)"/>
                     </div>
                   </div>                      <div class="col-md-4">
                     <div class="form-group">
@@ -895,7 +895,7 @@ function pulsar(e) {
                   
                      <div class="col-md-4">
                         <div class="form-group">
-                          <input type="text" name="anexos" value="{$fsc->editar->anexos}" class="form-control" placeholder="cualquier otro dispositivo"/>
+                          <input type="text" name="anexos" value="{$fsc->editar->anexos}" class="form-control" placeholder="cualquier otro dispositivo" onkeypress="return pulsar(event)"/>
                         </div>
                      </div>
                  
